@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+     <Banner class="flex justify-between p-2.5">
+        <div class="text-xl font-bold my-auto">foodies</div>
+        <nav class="my-auto flex items-center">
+            <a href="/" class="mx-2 text-gray-700">Home</a>
+            <a href="dashboard.html" class="mx-2 text-gray-700">Dashboard</a>
+            <a href="blog.html" class="mx-2 text-gray-700">Blog</a>
+            <a href="form.html" class="mx-2 text-gray-700">Contact</a>
+           <div class="relative inline-block text-left group">
+                <a href="#"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
+                    Recipes
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="ml-2 h-5 w-5 transform group-hover:rotate-180 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 z-20 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5
+                            opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out
+                            top-full">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="recipes-menu-button">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Meals</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Snacks</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Desserts</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
+    </Banner>
+    <main>
+        <div class="w-full h-[40vh]">
+            <img src="https://images.unsplash.com/photo-1565311456123-0c9ace220ee2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""
+            class="object-cover h-full w-full"
+            >
+        </div>
+        <article class="px-40 py-4">
+            
+            <div class="flex my-3 justify-between items-center">
+                <div class="flex">
+                    <p class="bg-yellow-100 text-black p-2 rounded-3xl text-xs hover:bg-yellow-400 mr-2">Dumplings</p>
+                    <p class="bg-yellow-100 text-black p-2 rounded-3xl text-xs hover:bg-yellow-400 mx-2">Soup Dumplings</p>
+                    <p class="bg-yellow-100 text-black p-2 rounded-3xl text-xs hover:bg-yellow-400 mx-2">Chinese food</p>
+                    <p class="bg-yellow-100 text-black p-2 rounded-3xl text-xs hover:bg-yellow-400 mx-2">Comfort food</p>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-400 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                    </svg>
+                </div>
+                
+            </div>
+
+            <h1 class="text-3xl font-semibold">Your Guide to: <i>Homemade Xiao Long Bao</i> </h1>
+            <h4 class="text-sm text-gray-400 mt-1">Written by Ashley</h4>
+            <h5 class="text-sm text-gray-400 mb-1">July 10, 2025</h5>
+
+            <h2 class="text-gray-600 text-md my-4 selection:bg-yellow-300 selection:text-black">Oh, Xiao Long Bao. Just the name conjures images of delicate, pleated parcels, each holding a secret treasure of savory broth and succulent pork. It's the kind of dish that feels like pure magic – a burst of hot, umami-rich soup followed by tender meat, all encased in a perfectly thin, chewy wrapper.
+                For years, I thought these ethereal soup dumplings were strictly the domain of seasoned dim sum chefs. The idea of making them at home felt as daunting as scaling Mount Everest with a pair of chopsticks. But, my fellow food adventurers, I'm here to tell you: it's absolutely achievable! Yes, it requires a little patience, a dash of precision, and a whole lot of love, but the reward? A truly unforgettable culinary experience that will impress anyone lucky enough to share a bite.
+                So, roll up your sleeves, put on your favorite cooking playlist, and let's unravel the delicious mystery of homemade Xiao Long Bao. Get ready to create your own pockets of pure joy!
+            </h2>
+            <h2 class="text-xl font-semibold my-4 selection:bg-yellow-300 selection:text-black">What you'll need</h2>
+            <ul class="list-disc marker:text-yellow-400 px-6" role="list">
+                <li class="italic text-gray-500">
+                    1 large Yellow Onion, quartered
+                </li>
+                <li class="italic text-gray-500">
+                    2-3 slices Fresh Ginger
+                </li>
+                <li class="italic text-gray-500">
+                    2-3 Green Onions, roughly chopped
+                </li>
+                <li class="italic text-gray-500">
+                    8 cups Water
+                </li>
+                <li class="italic text-gray-500">
+                    1 tbsp Shaoxing Wine (or dry sherry)
+                </li>
+                <li class="italic text-gray-500">  
+                    1 tsp Salt
+                </li>
+            </ul>
+            <h2 class="text-xl font-semibold my-4 selection:bg-yellow-300 selection:text-black">Your Step by Step Recipe</h2>
+            <p class=" text-gray-600 my-4 selection:bg-yellow-300 selection:text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus soluta sunt culpa similique atque quod. Fuga mollitia nesciunt qui, sint, exercitationem sunt at necessitatibus cupiditate enim voluptate architecto labore! Nulla sint porro enim odio perferendis autem, commodi incidunt sunt minima! Nihil impedit facilis nesciunt quis explicabo reiciendis, minus obcaecati doloremque dolore placeat labore neque blanditiis voluptatem dignissimos exercitationem ab. Odio error iste autem necessitatibus accusamus earum fugit modi itaque dolorem, velit alias. Vitae perspiciatis eligendi explicabo pariatur culpa omnis debitis, sapiente odio sequi aliquam quasi commodi neque! Amet minima iure harum, quam mollitia iusto velit rerum reprehenderit doloremque cumque dolore.</p>
+            <p class="text-gray-600 text-md my-4 selection:bg-yellow-300 selection:text-black">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ullam eaque unde, sequi labore nesciunt id, consequatur mollitia perspiciatis impedit pariatur inventore quia eveniet error, molestias expedita excepturi possimus ipsam dolores sapiente tenetur maxime fugit temporibus eius! Quibusdam praesentium vitae dolore tempore. Atque aliquam voluptatum animi dolore labore similique sint tempore a, optio laboriosam dolorem quibusdam magni officia autem culpa quisquam sapiente minima sit, libero quia mollitia perspiciatis! Rerum corporis aspernatur consequuntur unde excepturi error?</p>
+            
+            <h3 class="italic">Enjoy your Xiao Long Bao!</h3>
+        </article>
+    </main>
+    <footer>
+        <div class="bg-yellow-200 text-black py-8 text-center">
+            <p>&copy; 2025 foodies All rights reserved.</p>
+            <div class="my-4">
+            <a href="#" class="text-black mx-6 hover:underline">Privacy Policy</a>
+            <a href="#" class="text-black mx-6 hover:underline">Terms of Service</a>
+            <a href="#" class="text-black mx-6 hover:underline">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
