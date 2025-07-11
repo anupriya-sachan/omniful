@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <Banner class="flex justify-between p-2.5">
+        <div class="text-xl font-bold my-auto">foodies</div>
+        <nav class="my-auto flex items-center">
+            <a href="/" class="mx-2">Home</a>
+            <a href="dashboard.html" class="mx-2">Dashboard</a>
+            <a href="/blog" class="mx-2">Blog</a>
+           <div class="relative inline-block text-left group">
+                <a href="#"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
+                    Recipes
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="ml-2 h-5 w-5 transform group-hover:rotate-180 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 z-20 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5
+                            opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out
+                            top-full">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="recipes-menu-button">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Meals</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Snacks</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Desserts</a>
+                    </div>
+                </div>
+            </div>
+            <a href="/contact" class="mx-2">Contact</a>
+        </nav>
+        <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
+    </Banner>
+    <main class="flex flex-grow w-full">
+        <aside class="bg-gray-800 text-white p-4">
+            <nav aria-label="Dashboard Main Navigation">
+                <ul class="space-y-2">
+                    <li><a href="#overview" class="block py-2 px-3 rounded hover:bg-gray-700 transition duration-200">Overview</a></li>
+                    <li><a href="#progress" class="block py-2 px-3 rounded hover:bg-gray-700 transition duration-200">Progress & Stats</a></li>
+                    <li><a href="#my-recipes" class="block py-2 px-3 rounded hover:bg-gray-700 transition duration-200">My Recipes</a></li>
+                    <li><a href="#recent-meals" class="block py-2 px-3 rounded hover:bg-gray-700 transition duration-200">Recent Meals</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="main-content-area p-6 w-full">
+            <h1 class="text-xl font-bold mb-4">Hey ashley!</h1>
+            <section class="dashboard-section grid grid-cols-8 gap-4" id="overview">
+                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
+                    <div class="bg-yellow-400 p-4 rounded-lg ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+                        <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="mx-3">
+                        <h1 class="text-2xl font-bold">1800</h1>
+                        <h2 class="text-gray-400">Total calories consumed</h2>
+                    </div>
+                </div>
+                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
+                    <div class="bg-yellow-400 p-4 rounded-lg ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+                        <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071-.136 9.742 9.742 0 0 0-3.539 6.176 7.547 7.547 0 0 1-1.705-1.715.75.75 0 0 0-1.152-.082A9 9 0 1 0 15.68 4.534a7.46 7.46 0 0 1-2.717-2.248ZM15.75 14.25a3.75 3.75 0 1 1-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 0 1 1.925-3.546 3.75 3.75 0 0 1 3.255 3.718Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="mx-3">
+                        <h1 class="text-2xl font-bold">2000</h1>
+                        <h2 class="text-gray-400">Average calories consumed</h2>
+                    </div>
+                </div>
+                <div class="col-span-2 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
+                    <div class="bg-yellow-400 p-4 rounded-lg ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+                        <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z" />
+                        </svg>
+                    </div>
+                    <div class="mx-3">
+                        <h1 class="text-2xl font-bold">36</h1>
+                        <h2 class="text-gray-400">Daily Streak</h2>
+                    </div>
+                </div>
+            </section>
+            <section id="progress" class="bg-white rounded-lg shadow-md p-6 my-6">
+                <h2 class="text-2xl font-bold mb-4">Daily Calories Logged</h2>
+
+                <div class="flex items-end justify-between h-72 rounded-lg p-3">
+
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">2100</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 84%;"></div> 
+                        <span class="text-xs text-gray-600 mt-1">Mon</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">1950</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 78%;"></div> 
+                        <span class="text-xs text-gray-600 mt-1">Tue</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">2300</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 92%;"></div>
+                        <span class="text-xs text-gray-600 mt-1">Wed</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">1800</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 72%;"></div> 
+                        <span class="text-xs text-gray-600 mt-1">Thu</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">2000</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 80%;"></div>
+                        <span class="text-xs text-gray-600 mt-1">Fri</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">2500</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 100%;"></div> 
+                        <span class="text-xs text-gray-600 mt-1">Sat</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center justify-end h-full px-8">
+                        <span class="text-xs text-gray-700 font-semibold">1700</span>
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 68%;"></div> 
+                        <span class="text-xs text-gray-600 mt-1">Sun</span>
+                    </div>
+                </div>
+
+                <p class="sr-only" role="img" aria-label="Bar chart showing daily calorie intake for the week. Monday: 2100 calories, Tuesday: 1950 calories, Wednesday: 2300 calories, Thursday: 1800 calories, Friday: 2000 calories, Saturday: 2500 calories, Sunday: 1700 calories.">
+                    This is a bar chart representing weekly meal prep progress.
+                </p>
+            </section>
+            <section id="my-recipes">
+                <h2 class="text-2xl font-bold mb-4">My recipes!</h2>
+                <div  class="grid grid-cols-4 gap-4">
+                    <div class="col-span-1 h-fit w-56">
+                    <div class="w-full h-48 rounded-lg border-dashed border-green-500/40 border-2 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-black cursor-pointer">
+                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="my-1 text-lg font-bold">Add new!</h1>
+                    </div>
+                </div>
+                <div class="col-span-1 h-fit w-56">
+                    <div class="w-full h-48">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""
+                        class="h-48 w-80 object-cover rounded-lg">
+                    </div>
+                    <div>
+                        <h1 class="my-1 font-bold">Ramen Noodles</h1>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
+                            <div class="px-2 rounded-xl flex w-fit items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 h-fit w-56">
+                    <div class="w-full h-48">
+                        <img src="https://images.unsplash.com/photo-1625874588658-083b0f3868d3?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""
+                        class="h-48 w-80 object-cover rounded-lg">
+                    </div>
+                    <div>
+                        <h1 class="my-1 font-bold">Cherries</h1>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
+                            <div class="px-2 rounded-xl flex w-fit items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 h-fit w-56">
+                    <div class="w-full h-48">
+                        <img src="https://images.unsplash.com/photo-1512056068661-14ef8b6bfabe?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""
+                        class="h-48 w-80 object-cover rounded-lg">
+                    </div>
+                    <div>
+                        <h1 class="my-1 font-bold">Waffles</h1>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
+                            <div class="px-2 rounded-xl flex w-fit items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+            <section id="recent-meals" class="bg-white rounded-lg py-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4">Recent Meals Logged</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse text-left">
+                        <caption class="sr-only">Table showing recently logged meals.</caption>
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-3 px-4 text-sm font-semibold text-gray-700 tracking-wider border-b border-gray-200" scope="col">Date</th>
+                                <th class="py-3 px-4 text-sm font-semibold text-gray-700 tracking-wider border-b border-gray-200" scope="col">Meal</th>
+                                <th class="py-3 px-4 text-sm font-semibold text-gray-700 tracking-wider border-b border-gray-200" scope="col">Calories</th>
+                                <th class="py-3 px-4 text-sm font-semibold text-gray-700 tracking-wider border-b border-gray-200" scope="col">Type</th>
+                                <th class="py-3 px-4 text-sm font-semibold text-gray-700 tracking-wider border-b border-gray-200" scope="col">Recipe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">July 10</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Ramen Noodles</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">550</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Dinner</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-300 hover:text-blue-600">
+                                <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                                </svg>
+                                </td>
+
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">July 10</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Cherries</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">300</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Breakfast</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-300 hover:text-blue-600">
+                                <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                                </svg>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">July 09</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Waffles</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">400</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Lunch</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-300 hover:text-blue-600">
+                                <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                                </svg>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">July 09</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Boiled Asparagus</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">600</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200">Dinner</td>
+                                <td class="py-3 px-4 text-sm text-gray-800 border-b border-gray-200"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-300 hover:text-blue-600">
+                                <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                                </svg>
+                                </td>
+                            </tr>
+                            </tbody>
+                                </table>
+                            </div>
+            </section>
+        </div>
+    </main>
+
+    
+</body>
+</html>
