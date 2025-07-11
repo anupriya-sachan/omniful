@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <Banner class="flex justify-between p-2.5">
+        <div class="text-xl font-bold my-auto">foodies</div>
+        <nav class="my-auto flex items-center">
+            <a href="/" class="mx-2">Home</a>
+            <a href="dashboard.html" class="mx-2">Dashboard</a>
+            <a href="/blog" class="mx-2">Blog</a>
+           <div class="relative inline-block text-left group">
+                <a href="#"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
+                    Recipes
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="ml-2 h-5 w-5 transform group-hover:rotate-180 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 z-20 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5
+                            opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out
+                            top-full">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="recipes-menu-button">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Meals</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Snacks</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none" role="menuitem" tabindex="-1">Desserts</a>
+                    </div>
+                </div>
+            </div>
+            <a href="form.html" class="mx-2">Contact</a>
+        </nav>
+        <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
+    </Banner>
+    <main>
+        <section class="bg-yellow-200 w-full h-[50vh]">
+            <div class="mx-auto py-8">
+                <h1 class="text-center font-bold text-2xl my-1">Get Your Meal Plan Today</h1>
+                <h3 class="text-center text-md">Streamline Your Plate. Recipes & Tracking, Seamlessly.</h3>
+            </div>
+            <div class="bg-white mx-auto mt-4 w-1/2 h-fit p-5 shadow-md rounded-lg">
+                <form action="">
+                    <label for="input-name" class="text-md text-gray-500 ">Full name</label><br>
+                    <input type="text" required name="input-name" id="input-name" class="w-full mb-3 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+
+                    <label for="input-email" class="text-md text-gray-500 ">Email Address</label><br>
+                    <input type="email" required  name="input-email" id="input-email" class="w-full border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                    <p class="mb-3 text-xs text-gray-400">We'll use this to send your meal plans straight to inbox and any updates.</p>
+
+                    <label for="input-password" class="text-md text-gray-500 ">Password</label><br>
+                    <input type="password" required name="input-password" id="input-password" class="w-full border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                    <p class="mb-3 text-xs text-gray-400">Password must be at least 8 characters, including a number and a special character.</p>
+
+                    <label for="input-confirm-password" class="text-md text-gray-500 ">Confirm Password</label><br>
+                    <input type="password" required name="input-confirm-password" id="input-confirm-password" class="w-full border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                    <p class="mb-3 text-xs text-gray-400">Please re-enter your password to confirm.</p>
+
+                    <button class="bg-black py-3 px-5 rounded-lg cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300 mt-2">Register</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
