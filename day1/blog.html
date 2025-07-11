@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Homemade Xiao Long Bao Recipe - Foodies Blog</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
 <body>
-     <Banner class="flex justify-between p-2.5">
+     <header class="flex justify-between p-2.5">
         <div class="text-xl font-bold my-auto">foodies</div>
         <nav class="my-auto flex items-center">
             <a href="/" class="mx-2 text-gray-700">Home</a>
@@ -19,6 +19,7 @@
                 <a href="#"
                 aria-haspopup="true"
                 aria-expanded="false"
+                id="recipes-menu-button"
                 class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
                     Recipes
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -38,10 +39,11 @@
             </div>
         </nav>
         <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
-    </Banner>
+    </header>
     <main>
         <div class="w-full h-[40vh]">
-            <img src="https://images.unsplash.com/photo-1565311456123-0c9ace220ee2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""
+            <img src="https://images.unsplash.com/photo-1565311456123-0c9ace220ee2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            alt="Image of xiao long bao with spread"
             class="object-cover h-full w-full"
             >
         </div>
@@ -55,7 +57,9 @@
                     <p class="bg-yellow-100 text-black p-2 rounded-3xl text-xs hover:bg-yellow-400 mx-2">Comfort food</p>
                 </div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-400 cursor-pointer">
+                    <svg 
+                    aria-label="Share this article"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-400 cursor-pointer">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
                     </svg>
                 </div>
@@ -63,15 +67,15 @@
             </div>
 
             <h1 class="text-3xl font-semibold">Your Guide to: <i>Homemade Xiao Long Bao</i> </h1>
-            <h4 class="text-sm text-gray-400 mt-1">Written by Ashley</h4>
-            <h5 class="text-sm text-gray-400 mb-1">July 10, 2025</h5>
+            <p class="text-sm text-gray-400 mt-1">Written by Ashley</p>
+            <p class="text-sm text-gray-400 mb-1">July 10, 2025</p>
 
-            <h2 class="text-gray-600 text-md my-4 selection:bg-yellow-300 selection:text-black">Oh, Xiao Long Bao. Just the name conjures images of delicate, pleated parcels, each holding a secret treasure of savory broth and succulent pork. It's the kind of dish that feels like pure magic – a burst of hot, umami-rich soup followed by tender meat, all encased in a perfectly thin, chewy wrapper.
+            <p class="text-gray-600 text-md my-4 selection:bg-yellow-300 selection:text-black">Oh, Xiao Long Bao. Just the name conjures images of delicate, pleated parcels, each holding a secret treasure of savory broth and succulent pork. It's the kind of dish that feels like pure magic – a burst of hot, umami-rich soup followed by tender meat, all encased in a perfectly thin, chewy wrapper.
                 For years, I thought these ethereal soup dumplings were strictly the domain of seasoned dim sum chefs. The idea of making them at home felt as daunting as scaling Mount Everest with a pair of chopsticks. But, my fellow food adventurers, I'm here to tell you: it's absolutely achievable! Yes, it requires a little patience, a dash of precision, and a whole lot of love, but the reward? A truly unforgettable culinary experience that will impress anyone lucky enough to share a bite.
                 So, roll up your sleeves, put on your favorite cooking playlist, and let's unravel the delicious mystery of homemade Xiao Long Bao. Get ready to create your own pockets of pure joy!
-            </h2>
+            </p>
             <h2 class="text-xl font-semibold my-4 selection:bg-yellow-300 selection:text-black">What you'll need</h2>
-            <ul class="list-disc marker:text-yellow-400 px-6" role="list">
+            <ul class="list-disc marker:text-yellow-400 px-6">
                 <li class="italic text-gray-500">
                     1 large Yellow Onion, quartered
                 </li>
@@ -101,11 +105,11 @@
     <footer>
         <div class="bg-yellow-200 text-black py-8 text-center">
             <p>&copy; 2025 foodies All rights reserved.</p>
-            <div class="my-4">
-            <a href="#" class="text-black mx-6 hover:underline">Privacy Policy</a>
-            <a href="#" class="text-black mx-6 hover:underline">Terms of Service</a>
-            <a href="#" class="text-black mx-6 hover:underline">Contact Us</a>
-            </div>
+            <nav aria-label="Footer Navigation" class="my-4">
+                <a href="#" class="text-black mx-6 hover:underline">Privacy Policy</a>
+                <a href="#" class="text-black mx-6 hover:underline">Terms of Service</a>
+                <a href="#" class="text-black mx-6 hover:underline">Contact Us</a>
+            </nav>
         </div>
     </footer>
 </body>

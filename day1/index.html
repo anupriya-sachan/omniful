@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>foodies - Delicious Recipes & Culinary Inspiration</title> <meta name="description" content="Explore a world of delicious recipes, culinary inspiration, and cooking tips on foodies. Find your next favorite meal for breakfast, lunch, and dinner!">    
+    <meta name="keywords" content="foodies, recipes, cooking, food, breakfast recipes, lunch recipes, dinner recipes, desserts, snacks, culinary, healthy food, easy recipes">
+    <meta property="og:description" content="Explore a world of delicious recipes, culinary inspiration, and cooking tips on foodies. Find your next favorite meal for breakfast, lunch, and dinner!">
+    
+    <meta name="twitter:title" content="foodies - Delicious Recipes & Culinary Inspiration">
+    <meta name="twitter:description" content="Explore a world of delicious recipes, culinary inspiration, and cooking tips on foodies. Find your next favorite meal for breakfast, lunch, and dinner!">
+    
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col">
-    <Banner class="flex justify-between p-2.5">
+    <header class="flex justify-between p-2.5">
         <div class="text-xl font-bold my-auto">foodies</div>
         <nav class="my-auto flex items-center">
             <a href="/" class="mx-2 text-gray-700">Home</a>
@@ -18,6 +24,7 @@
                 <a href="#"
                 aria-haspopup="true"
                 aria-expanded="false"
+                id="recipes-menu-button"
                 class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
                     Recipes
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -37,7 +44,7 @@
             </div>
         </nav>
         <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
-    </Banner>
+    </header>
     <main>
         <section>
             <div class="w-full relative overflow-hidden h-[90vh]">
@@ -101,8 +108,8 @@
                         <h1 class="my-1 font-bold text-left">Hawaiian Smoked Pizza</h1>
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
-                            <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
+                            <div class="px-2 rounded-xl flex w-fit items-center" aria-label="Rating 4.5 stars">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                                 <p class="text-md">4.5</p>
@@ -120,8 +127,8 @@
                         <h1 class="my-1 font-bold text-left">Ramen Noodles</h1>
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
-                            <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
+                            <div class="px-2 rounded-xl flex w-fit items-center" aria-label="Rating 4.5 stars">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                                 <p class="text-md">4.5</p>
@@ -138,8 +145,8 @@
                         <h1 class="my-1 font-bold text-left">Carbonara</h1>
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
-                            <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
+                            <div class="px-2 rounded-xl flex w-fit items-center" aria-label="Rating 4.5 stars">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 m-0.5">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                                 <p class="text-md">4.5</p>
@@ -174,7 +181,7 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer role="contentinfo">
         <div class="bg-yellow-200 text-black py-8 text-center">
             <p>&copy; 2025 foodies All rights reserved.</p>
             <div class="my-4">
