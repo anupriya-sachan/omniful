@@ -9,7 +9,7 @@
 <body>
     <header class="flex justify-between p-2.5">
         <div class="text-xl font-bold my-auto">foodies</div>
-        <nav class="my-auto flex items-center">
+        <nav class="my-auto flex items-center" aria-label="main-navigation">
             <a href="/" class="mx-2 text-gray-700">Home</a>
             <a href="dashboard.html" class="mx-2 text-gray-700">Dashboard</a>
             <a href="blog.html" class="mx-2 text-gray-700">Blog</a>
@@ -21,7 +21,7 @@
                 id="recipes-menu-button"
                 class="mx-2 flex items-center text-gray-700 hover:text-blue-500 transition duration-200 py-2">
                     Recipes
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                         class="ml-2 h-5 w-5 transform group-hover:rotate-180 transition-transform duration-300">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </nav>
-        <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300">Register</button>
+        <button class="bg-black py-3 px-5 rounded-3xl cursor-pointer text-sm text-white hover:bg-yellow-400 hover:text-black transition duration-300" aria-label="Register for an account">Register</button>
     </header>
     <main class="flex flex-grow w-full">
         <aside class="bg-gray-800 text-white p-4" role="complementary">
@@ -53,43 +53,43 @@
         <div class="main-content-area p-6 w-full" role="region" aria-label="Dashboard Main">
             <h1 class="text-xl font-bold mb-4">Hey ashley!</h1>
             <h2 class="sr-only" id="overview-heading">Overview Statistics</h2>
-            <section class="dashboard-section grid grid-cols-8 gap-4" id="overview" aria-labelledby="overview-heading">
-                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
-                    <div class="bg-yellow-400 p-4 rounded-lg ">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+            <section class="dashboard-section grid grid-cols-8 gap-4" id="overview" aria-labelledby="overview-heading" role="group">
+                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md" aria-labelledby="total_calories">
+                    <div class="bg-yellow-400 p-4 rounded-lg" >
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
                         <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="mx-3">
                         <h3 class="text-2xl font-bold">1800</h3>
-                        <p class="text-gray-400">Total calories consumed</p>
+                        <p class="text-gray-400" id="total_calories">Total calories consumed</p>
                     </div>
                 </div>
-                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
+                <div class="col-span-3 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md" aria-labelledby="Average_Calories">
                     <div class="bg-yellow-400 p-4 rounded-lg ">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
                         <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071-.136 9.742 9.742 0 0 0-3.539 6.176 7.547 7.547 0 0 1-1.705-1.715.75.75 0 0 0-1.152-.082A9 9 0 1 0 15.68 4.534a7.46 7.46 0 0 1-2.717-2.248ZM15.75 14.25a3.75 3.75 0 1 1-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 0 1 1.925-3.546 3.75 3.75 0 0 1 3.255 3.718Z" clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="mx-3">
                         <h3 class="text-2xl font-bold">2000</h3>
-                        <p class="text-gray-400">Average calories consumed</p>
+                        <p class="text-gray-400" id="Average_Calories">Average calories consumed</p>
                     </div>
                 </div>
-                <div class="col-span-2 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md">
+                <div class="col-span-2 h-36 rounded-lg hover:bg-yellow-100 flex px-10 items-center shadow-md" aria-labelledby="Daily_Streak">
                     <div class="bg-yellow-400 p-4 rounded-lg ">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
                         <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z" />
                         </svg>
                     </div>
                     <div class="mx-3">
                         <h3 class="text-2xl font-bold">36</h3>
-                        <p class="text-gray-400">Daily Streak</p>
+                        <p class="text-gray-400" id="Daily_Streak">Daily Streak</p>
                     </div>
                 </div>
             </section>
-            <section id="progress" class="bg-white rounded-lg shadow-md p-6 my-6">
-                <h2 class="text-2xl font-bold mb-4">Daily Calories Logged</h2>
+            <section id="progress" class="bg-white rounded-lg shadow-md p-6 my-6" aria-labelledby="daily_calorie_log">
+                <h2 class="text-2xl font-bold mb-4" id="daily_calorie_log">Daily Calories Logged</h2>
 
                 <div class="flex items-end justify-between h-72 rounded-lg p-3">
 
@@ -138,12 +138,12 @@
                     This is a bar chart representing weekly meal prep progress.
                 </p>
             </section>
-            <section id="my-recipes">
-                <h2 class="text-2xl font-bold mb-4">My recipes!</h2>
+            <section id="my-recipes" aria-labelledby="my_recipes">
+                <h2 class="text-2xl font-bold mb-4" id="my_recipes">My recipes!</h2>
                 <div  class="grid grid-cols-4 gap-4">
                     <div class="col-span-1 h-fit w-56">
                     <div class="w-full h-48 rounded-lg border-dashed border-green-500/40 border-2 flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-black cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-10 text-black cursor-pointer">
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                         </svg>
                     </div>
@@ -161,7 +161,7 @@
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
                             <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -178,7 +178,7 @@
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
                             <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -195,7 +195,7 @@
                         <div class="flex justify-between">
                             <button class="bg-gray-100 py-2 px-2 rounded-3xl cursor-pointer text-xs text-black hover:bg-yellow-400 transition duration-300">Check recipe!</button>
                             <div class="px-2 rounded-xl flex w-fit items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-5 m-0.5 hover:text-pink-500">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -204,8 +204,8 @@
                     </div>
                 </div> 
             </section>
-            <section id="recent-meals" class="bg-white rounded-lg py-6 mb-6">
-                <h2 class="text-2xl font-bold mb-4">Recent Meals Logged</h2>
+            <section id="recent-meals" class="bg-white rounded-lg py-6 mb-6" aria-labelledby="Recent-meals">
+                <h2 class="text-2xl font-bold mb-4" id="Recent-meals">Recent Meals Logged</h2>
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse text-left">
                         <caption class="sr-only">Table showing recently logged meals.</caption>
@@ -267,12 +267,12 @@
         </div>
     </main>
     <footer role="contentinfo">
-        <div class="bg-yellow-200 text-black py-8 text-center">
+        <div class="bg-gray-800  text-white py-8 text-center">
             <p>&copy; 2025 foodies All rights reserved.</p>
             <div class="my-4">
-            <a href="#" class="text-black mx-6 hover:underline">Privacy Policy</a>
-            <a href="#" class="text-black mx-6 hover:underline">Terms of Service</a>
-            <a href="#" class="text-black mx-6 hover:underline">Contact Us</a>
+            <a href="#" class="text-white mx-6 hover:underline">Privacy Policy</a>
+            <a href="#" class="text-white mx-6 hover:underline">Terms of Service</a>
+            <a href="#" class="text-white mx-6 hover:underline">Contact Us</a>
             </div>
         </div>
     </footer>
