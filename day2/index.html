@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day2-assignment</title>
+
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: grid;
+            height: 100vh;
+        }
+        .main-header{
+            height: 60px;
+            width:100vw;
+            background-color: #36013f;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-logo{
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+        .header-options{
+            display: flex;
+            align-items: center;
+        }
+        .heading{
+            text-align: left;
+            margin:0vh 4vh;
+        }
+        input[type=checkbox].hidden{
+            height: 0px;
+            width: 0px;
+            opacity: 0;
+        }
+        .nav-icons{
+            color: white;
+            height: 25px;
+            width: 25px;
+            margin: 8px;
+            cursor: pointer;
+        }
+        .nav-hamburger{
+            color: white;
+            height: 25px;
+            width: 25px;
+            margin: 8px;
+            cursor: pointer;
+        }
+        .main-section{
+            padding: .2%;
+            height: 100%;
+        }
+        .main-sidebar{
+            background-color: #36013f;
+            width: 40vw;
+            height: 100%; 
+            z-index: 30;
+            position: fixed;
+        }
+        .product-list{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-card{
+            height:fit-content;
+            width: 87vw;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 10px 10px;
+        }
+        .img-container{
+            height:35vh;
+            width: 87vw;
+            border-radius: 8px;
+        }
+        .product-tags{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product-tags p{
+            background-color: #5d5d5d;
+            padding: 4px 10px;
+            color: white;
+            margin: 2px;
+            border-radius: 8px;
+            font-size: smaller;
+            text-align: center;
+        }
+        .product-description{
+            font-size:medium;
+            line-height: 25px;
+            overflow: hidden;
+        }
+        .product-info button{
+            padding: 18px 28px;
+            border:1px solid black;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .product-info button:hover{
+            color: white;
+            background-color: black;
+        }
+        .sidebar-overlay{
+            position: fixed; 
+            top: 0;         
+            left: 0;         
+            width: 100vw;    
+            height: 100vh;   
+            background-color: rgba(0, 0, 0, 0.5); 
+            z-index: 20;                 
+            /*display: none;*/  
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-logo">
+            <label for="sidebar-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-hamburger">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </label>
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            </input> 
+        </div>
+        <div class="header-options">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+              
+        </div>
+    </header>
+
+    <div class="content-section">
+        <div class="sidebar-overlay"></div>
+        <aside class="main-sidebar">
+
+
+        </aside>
+        <main class="main-section">
+            <div class="heading">
+                <h1 style="text-align: left;">Our Products</h1>
+            </div>
+            <div class="product-list">
+                <div class="product-card">
+                    <div class="img-container">
+                        <img 
+                        style="object-fit: cover; height:100%; width: 100%; border-radius: 8px; "
+                        src="https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h1 style="margin: 6px 0px; font-weight: 600;">Beats Studio Pro</h1>
+                        <p style="font-weight: 500;">$349.70</p>
+                        <div class="product-tags">
+                            <p>USB C</p>
+                            <p>Noise Cancelling</p>
+                            <p>Transparency Mode</p>
+                        </div>
+                        <p class="product-description">
+                            High-fidelity lossless audio via USB-Cfootnote1
+                            Active Noise Cancelling and Transparency mode
+                            Up to 40 hours of listening time footnote3
+                        </p>
+                        <button>View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-container">
+                        <img 
+                        style="object-fit: cover; height:100%; width: 100%; border-radius: 8px; "
+                        src="https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h1 style="margin: 6px 0px; font-weight: 600;">Beats Studio Pro</h1>
+                        <p style="font-weight: 500;">$349.70</p>
+                        <div class="product-tags">
+                            <p>USB C</p>
+                            <p>Noise Cancelling</p>
+                            <p>Transparency Mode</p>
+                        </div>
+                        <p class="product-description">
+                            High-fidelity lossless audio via USB-Cfootnote1
+                            Active Noise Cancelling and Transparency mode
+                            Up to 40 hours of listening time footnote3
+                        </p>
+                        <button>View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-container">
+                        <img 
+                        style="object-fit: cover; height:100%; width: 100%; border-radius: 8px; "
+                        src="https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h1 style="margin: 6px 0px; font-weight: 600;">Beats Studio Pro</h1>
+                        <p style="font-weight: 500;">$349.70</p>
+                        <div class="product-tags">
+                            <p>USB C</p>
+                            <p>Noise Cancelling</p>
+                            <p>Transparency Mode</p>
+                        </div>
+                        <p class="product-description">
+                            High-fidelity lossless audio via USB-Cfootnote1
+                            Active Noise Cancelling and Transparency mode
+                            Up to 40 hours of listening time footnote3
+                        </p>
+                        <button>View Details</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+    </footer>
+</body>
+</html>
