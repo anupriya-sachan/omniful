@@ -15,12 +15,14 @@
         }
         .main-header{
             height: 60px;
-            width:100vw;
+            width:100%;
             background-color: #36013f;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            position: fixed;
+            z-index: 40;
         }
         .header-logo{
             display: flex;
@@ -55,15 +57,8 @@
             cursor: pointer;
         }
         .main-section{
-            padding: .2%;
+            padding: .5%;
             height: 100%;
-        }
-        .main-sidebar{
-            background-color: #36013f;
-            width: 40vw;
-            height: 100%; 
-            z-index: 30;
-            position: fixed;
         }
         .product-list{
             display: flex;
@@ -72,7 +67,7 @@
         }
         .product-card{
             height:fit-content;
-            width: 87vw;
+            width: 80%;
             padding: 10px;
             background-color: #f0f0f0;
             border-radius: 8px;
@@ -80,7 +75,9 @@
         }
         .img-container{
             height:35vh;
-            width: 87vw;
+            width: 95%;
+            margin: auto;
+            padding: 10px;
             border-radius: 8px;
         }
         .product-tags{
@@ -111,6 +108,17 @@
             color: white;
             background-color: black;
         }
+        .main-sidebar{
+            background-color: #36013f;
+            width: 40vw;
+            height: 100%; 
+            z-index: 30;
+            position: fixed;
+            margin-top: 50px;   
+            padding: 10px; 
+            display: none;        
+
+        }
         .sidebar-overlay{
             position: fixed; 
             top: 0;         
@@ -119,20 +127,97 @@
             height: 100vh;   
             background-color: rgba(0, 0, 0, 0.5); 
             z-index: 20;                 
-            /*display: none;*/  
             cursor: pointer;
+            display: none;
+        }
+        #sidebar-toggle:checked ~.sidebar-overlay{
+            display: block;
+        }
+        #sidebar-toggle:checked ~ .content-section > .main-sidebar{
+            display: block;
+        }
+        .nav-item{
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+
+        }
+        .nav-item:hover{
+            border-radius: 8px;
+            background: #7a2489;
+        }
+        .nav-icon{
+            color: white;
+            height: 20px;
+            width: 20px;
+            padding: 4px;
+            margin-right:2px ;
+        }
+        .nav-link{
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (min-width:768px) {
+            .main-sidebar{
+                display: block;
+                position: relative;
+                min-width: fit-content;
+                padding-right:40px;
+                max-width: fit-content;
+            }
+            .content-section{
+                display: flex;
+            }
+            .nav-hamburger{
+                display: none;
+            }
+            .product-list{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .product-card{
+                width: 70%;
+                display: flex;
+                flex-direction: row;
+            }
+            .img-container{
+                flex-basis: 50%;
+                height: 400px;
+            }
+            .product-info{
+                flex-basis: 50%;
+            }
+        }
+        @media (min-width:1482px) {
+            .product-card{
+                width: 40%;
+                display: flex;
+                flex-direction: row;
+            }
+            .img-container{
+                flex-basis: 50%;
+                height: 350px;
+                margin: 1px;
+            }
+            .product-info{
+                flex-basis: 50%;
+            }
+            
         }
     </style>
 </head>
 <body>
+    <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+    <div class="sidebar-overlay"></div>
     <header class="main-header">
-        <div class="header-logo">
-            <label for="sidebar-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-hamburger">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </label>
-            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <div class="header-logo">
+                <label for="sidebar-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-hamburger">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </label>
             </input> 
         </div>
         <div class="header-options">
@@ -142,22 +227,61 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-              
+            </svg>          
         </div>
     </header>
 
     <div class="content-section">
-        <div class="sidebar-overlay"></div>
         <aside class="main-sidebar">
-
-
+            <div class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
+                </svg>
+                <a href="#" class="nav-link">Responsive</a></div>
+            <div class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                </svg>
+                <a href="#" class="nav-link">Grids & Flex</a></div>
+            <div class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
+                </svg>
+                <a href="#" class="nav-link">Animations</a></div>
+            <div class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+                </svg>
+                <a href="#" class="nav-link">Transitions</a>
+            </div>
         </aside>
         <main class="main-section">
             <div class="heading">
-                <h1 style="text-align: left;">Our Products</h1>
+                <h1 style="text-align: left; margin-top: 60px; width: 80%; padding-left: 16px;">Our Products</h1>
             </div>
             <div class="product-list">
+                <div class="product-card">
+                    <div class="img-container">
+                        <img 
+                        style="object-fit: cover; height:100%; width: 100%; border-radius: 8px; "
+                        src="https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h1 style="margin: 6px 0px; font-weight: 600;">Beats Studio Pro</h1>
+                        <p style="font-weight: 500;">$349.70</p>
+                        <div class="product-tags">
+                            <p>USB C</p>
+                            <p>Noise Cancelling</p>
+                            <p>Transparency Mode</p>
+                        </div>
+                        <p class="product-description">
+                            High-fidelity lossless audio via USB-Cfootnote1
+                            Active Noise Cancelling and Transparency mode
+                            Up to 40 hours of listening time footnote3
+                        </p>
+                        <button>View Details</button>
+                    </div>
+                </div>
                 <div class="product-card">
                     <div class="img-container">
                         <img 
