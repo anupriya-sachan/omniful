@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .grid-layout{
+            display: grid;
+            height: 100vh;
+            grid-template-rows: 1fr 8fr 1fr;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-areas: 
+            "grid-header grid-header grid-header"
+            "grid-left-sidebar grid-content grid-right-sidebar"
+            "grid-footer grid-footer grid-footer";
+        }
+        .flex-layout{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+        }
+        .grid-header{
+            background-color: rgba(0, 0, 0, 0.114);
+            grid-area: grid-header;
+        }
+        .grid-footer{
+            background-color: rgba(0, 0, 0, 0.114);
+            grid-area: grid-footer;
+        }
+        .grid-left-sidebar{
+            background-color: rgba(0, 0, 0, 0.566);
+            grid-area: grid-left-sidebar;
+        }
+        .grid-right-sidebar{
+            background-color: rgba(0, 0, 0, 0.566);
+            grid-area: grid-right-sidebar;
+        }
+        .grid-content{
+            background-color: rgba(0, 0, 0, 0.858);
+            grid-area: grid-content;
+        }
+        .flex-header{
+            flex-shrink:0 ;
+            height: 10vh;
+            background-color: rgba(0, 0, 0, 0.114);
+        }
+        .flex-footer{
+            flex-shrink:0 ;
+            height: 10vh;
+            background-color: rgba(0, 0, 0, 0.114);
+        }
+        .flex-container{
+            display: flex;
+            flex-grow: 1;
+            flex-direction: row;
+        }
+        .flex-left-sidebar,
+        .flex-right-sidebar{
+            width: 20vw;
+            height: 100%;
+            flex-shrink: 0;
+            background-color: rgba(0, 0, 0, 0.566);
+
+        }
+        .flex-content{
+            flex-grow: 1;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="grid-layout">
+                    <header class="grid-header"></header>
+                    <div class="grid-left-sidebar"></div>
+                    <div class="grid-content"></div>
+                    <div class="grid-right-sidebar"></div>
+                    <footer class="grid-footer"></footer>
+            </div>
+        </section>
+        <section>
+            <div class="flex-layout">
+                <header class="flex-header"></header>
+                <div class="flex-container">
+                    <div class="flex-left-sidebar"></div>
+                    <div class="flex-content"></div>
+                    <div class="flex-right-sidebar"></div>
+                </div>   
+                <footer class="flex-footer"></footer>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
