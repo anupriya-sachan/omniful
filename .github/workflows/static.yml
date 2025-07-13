@@ -5,6 +5,10 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths: # <--- ADDED/MODIFIED THIS SECTION
+      - "day1/**"
+      - "day2/**"
+      - ".github/workflows/**" # Keep this to trigger on changes to the workflow itself
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,13 +35,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # NEW STEP: Prepare combined site content
+      - name: Prepare combined site content
+        run: |
+          mkdir _site # Create a temporary directory for the combined site
+          cp -r day1 _site/day1 # Copy day1 folder into _site/day1
+          cp -r day2 _site/day2 # Copy day2 folder into _site/day2
+          # Now, the _site directory contains:
+          # _site/
+          # ├── day1/
+          # │   ├── index.html
+          # │   └── ...
+          # └── day2/
+          #     ├── index.html
+          #     └── ...
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './day1'
+          # Upload the entire combined _site directory
+          path: "./_site" # <--- MODIFIED THIS LINE
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
