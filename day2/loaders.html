@@ -12,6 +12,10 @@
         .container{
             display: flex;
             flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            height: 100vh;
         }
         .loader{
             height: 100px;
@@ -20,15 +24,22 @@
             display: flex;
             justify-content: center;
             align-items: center; 
-            background-color: bisque;
+            border: 1px solid rgba(245, 245, 245, 0.795);
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px lavender;            
         }
+
+        .loader:hover{
+            transform: rotateY(5deg) rotateX(5deg) translateZ(50px) scale(1.05);
+            transition-duration: .3s;
+        }        
         
         .spinner-one{
             margin: auto;
-            border-left:2px solid gray;
-            border-right:2px solid gray;
-            border-bottom:2px solid gray;
-            border-top: 2px solid bisque ;
+            border-left:2px solid purple;
+            border-right:2px solid purple;
+            border-bottom:2px solid purple;
+            border-top: 2px solid white ;
             border-radius: 50%;
             width: 30px;
             height: 30px;
