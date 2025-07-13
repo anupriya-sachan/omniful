@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding:0px;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+        }
+        .loader{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            background-color: bisque;
+        }
+        
+        .spinner-one{
+            margin: auto;
+            border-left:2px solid gray;
+            border-right:2px solid gray;
+            border-bottom:2px solid gray;
+            border-top: 2px solid bisque ;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: loaderOne 1s linear infinite; 
+        }
+        @keyframes loaderOne {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinner-two{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .spinner-two-one,
+        .spinner-two-two,
+        .spinner-two-three{            
+            margin: 3px;
+            background-color: purple;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: loaderTwo 1.5s linear infinite; 
+        }
+
+        .spinner-two-two{
+            animation-delay: .375s;
+        }
+
+        .spinner-two-three{
+            animation-delay: .75s;
+
+        }
+
+        @keyframes loaderTwo {
+            0% {transform: translateY(0); }
+            25% {transform: translateY(5px); }
+            50% {transform: translateY(0); }
+            75% {transform: translateY(-5px); }
+            100% {transform: translateY(0);}
+        }
+
+        .spinner-three{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner-three-one,
+        .spinner-three-two,
+        .spinner-three-three{
+            margin: 5px;
+            background-color: purple;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        .spinner-three-one{
+            animation: sphere-one 1.5s linear infinite;
+        }
+
+        .spinner-three-two{
+            animation: sphere-two 1.5s ease-in-out infinite;
+        }
+
+        .spinner-three-three{
+            animation: sphere-three 1.5s linear infinite;
+        }
+
+        @keyframes sphere-one {
+            0%,100% {}
+            50% {transform: translateX(20px);}
+        }
+        @keyframes sphere-three {
+            0%,100% {}
+            50% {transform: translateX(-20px);}
+
+        }
+        @keyframes sphere-two {
+            0% {transform: translateY(0); }
+            50% {transform: translateY(-20px); }
+            100% {transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loader">
+            <div class="spinner-one">
+
+            </div>
+        </div>
+        <div class="loader">
+            <div class="spinner-two">
+                <div class="spinner-two-one"></div>
+                <div class="spinner-two-two"></div>
+                <div class="spinner-two-three"></div>
+            </div>
+        </div>
+        <div class="loader">
+            <div class="spinner-three">
+                <div class="spinner-three-one"></div>
+                <div class="spinner-three-two"></div>
+                <div class="spinner-three-three"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
