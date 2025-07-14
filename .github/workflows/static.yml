@@ -55,7 +55,7 @@ jobs:
           mkdir _site # Create a temporary directory for the combined site
           cp -r day1 _site/day1 # Copy day1 folder into _site/day1
           cp -r day2 _site/day2 # Copy day2 folder into _site/day2
-          cp -r day4/build _site/day4 # <--- ADD THIS LINE
+          cp -r day4/dist _site/day4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
