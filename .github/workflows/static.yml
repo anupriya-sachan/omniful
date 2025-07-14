@@ -45,17 +45,39 @@ jobs:
         working-directory: ./day4
         run: npm ci
 
+      # NEW DEBUG STEP: Inspect directory and vite.config.js
+      - name: Debug Vite Configuration in Workflow
+        working-directory: ./day4
+        run: |
+          echo "--- Listing contents of current directory (./day4) ---"
+          ls -F
+          echo ""
+          echo "--- Listing contents of vite.config.js ---"
+          cat vite.config.js || echo "ERROR: vite.config.js not found or unreadable!"
+          echo ""
+          echo "--- Checking npm build script in package.json ---"
+          cat package.json | grep '"build"' || echo "ERROR: 'build' script not found in package.json!"
+          echo ""
+
       - name: Build React app
         working-directory: ./day4
         run: npm run build
 
-      # NEW STEP: Prepare combined site content
+      # NEW STEP: Confirm dist output after build (optional, but good for quick check)
+      - name: Verify Build Output After Build
+        working-directory: ./day4
+        run: |
+          echo "--- Contents of day4/dist/index.html after build ---"
+          cat dist/index.html || echo "ERROR: dist/index.html not found!"
+          echo ""
+
+      # NEW STEP: Prepare combined site content (renamed for clarity with day4 prefix)
       - name: Prepare combined site content
         run: |
           mkdir _site # Create a temporary directory for the combined site
           cp -r day1 _site/day1 # Copy day1 folder into _site/day1
           cp -r day2 _site/day2 # Copy day2 folder into _site/day2
-          cp -r day4/dist _site/day4
+          cp -r day4/dist _site/day4 # Corrected: Copy day4's 'dist' folder, not 'build'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
