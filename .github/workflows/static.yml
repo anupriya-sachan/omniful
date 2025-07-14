@@ -5,12 +5,12 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-    paths: # <--- ADDED/MODIFIED THIS SECTION
+    paths:
       - "day1/**"
       - "day2/**"
-      - ".github/workflows/**" # Keep this to trigger on changes to the workflow itself
+      - "day4/**"
+      - ".github/workflows/**"
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -36,20 +36,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install React app dependencies
+        working-directory: ./day4
+        run: npm ci
+
+      - name: Build React app
+        working-directory: ./day4
+        run: npm run build
+
       # NEW STEP: Prepare combined site content
       - name: Prepare combined site content
         run: |
           mkdir _site # Create a temporary directory for the combined site
           cp -r day1 _site/day1 # Copy day1 folder into _site/day1
           cp -r day2 _site/day2 # Copy day2 folder into _site/day2
-          # Now, the _site directory contains:
-          # _site/
-          # ├── day1/
-          # │   ├── index.html
-          # │   └── ...
-          # └── day2/
-          #     ├── index.html
-          #     └── ...
+          cp -r day4/build _site/day4 # <--- ADD THIS LINE
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -58,7 +64,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the entire combined _site directory
-          path: "./_site" # <--- MODIFIED THIS LINE
+          path: "./_site"
 
       - name: Deploy to GitHub Pages
         id: deployment

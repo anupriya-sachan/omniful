@@ -9,7 +9,7 @@ export default function useDebounce(func,val,delay=300){
 
 }
 
-function useDebouncedValue(val,delay=300){
+export function useDebouncedValue(val,delay=300){
     const [value,setValue] = useState(val);
     useEffect(()=>{
         let timer = setTimeout(() => {
