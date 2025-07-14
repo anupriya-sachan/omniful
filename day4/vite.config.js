@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss(),
   ],
-  base: 'https://anupriya-sachan.github.io/omniful/day4/',
+  base: '/',
 })
