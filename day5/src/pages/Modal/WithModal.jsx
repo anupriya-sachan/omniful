@@ -95,7 +95,7 @@ function CreateSideModal({children,title,closeModal}){
     return(
         <div>
             <div className="bg-gray-400/20 h-screen w-screen fixed top-0 left-0 z-10" onClick={closeModal}></div>
-            <div className="h-full min-w-72 bg-white right-0 top-0 absolute z-20">
+            <div className="h-full min-w-72 bg-white right-0 top-0 fixed z-20">
                 <p className="mx-5 my-2 p-2">{title}</p>
                 <div className="flex p-2 hover:bg-green-100 mx-5 my-3 rounded-lg items-center"> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 m-1">

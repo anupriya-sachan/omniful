@@ -8,6 +8,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AccordionPage from './pages/Accordion/index.jsx';
+import ImplementModal from './pages/Modal/index.jsx';
+import InfiniteScroll from './pages/InfiniteScroll/index.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -17,6 +19,13 @@ const Router = createBrowserRouter([
   {
     path:'/accordion',
     element:<AccordionPage/>
+  },{
+    path:'/modal',
+    element:<ImplementModal/>
+  },
+  {
+    path:'/scroll',
+    element:<InfiniteScroll/>
   }
 ])
 
