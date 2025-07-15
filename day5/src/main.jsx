@@ -10,22 +10,29 @@ import {
 import AccordionPage from './pages/Accordion/index.jsx';
 import ImplementModal from './pages/Modal/index.jsx';
 import InfiniteScroll from './pages/InfiniteScroll/index.jsx';
+import Search from './pages/Search/index.jsx';
 
 const Router = createBrowserRouter([
   {
     path:'/',
-    element:<App/>
-  },
-  {
-    path:'/accordion',
-    element:<AccordionPage/>
-  },{
+    element:<App/>,
+    children:[{
+      path:'/accordion',
+      element:<AccordionPage/>  
+    },
+    {
     path:'/modal',
     element:<ImplementModal/>
-  },
-  {
-    path:'/scroll',
-    element:<InfiniteScroll/>
+    },
+    {
+      path:'/scroll',
+      element:<InfiniteScroll/>
+    },
+    {
+      path:'/search',
+      element:<Search/>
+    }
+    ]
   }
 ])
 
