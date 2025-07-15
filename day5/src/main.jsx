@@ -17,19 +17,19 @@ const Router = createBrowserRouter([
     path:'/',
     element:<App/>,
     children:[{
-      path:'/accordion',
+      path:'accordion',
       element:<AccordionPage/>  
     },
     {
-    path:'/modal',
+    path:'modal',
     element:<ImplementModal/>
     },
     {
-      path:'/scroll',
+      path:'scroll',
       element:<InfiniteScroll/>
     },
     {
-      path:'/search',
+      path:'search',
       element:<Search/>
     }
     ]
