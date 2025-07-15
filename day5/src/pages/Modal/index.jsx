@@ -3,7 +3,7 @@ import WithModal from "./WithModal";
 function ImplementModal(){
     return(
         <>
-        <WithModal children={<SampleModal/>} title={" Lets Open a Sample Modal"}/>
+        <WithModal children={<SampleModal/>} title={"Press ESC or click anywhere to close!"}/>
         </>
     )
 }
