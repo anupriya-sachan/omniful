@@ -1,6 +1,5 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
 
-
 //exported to be used directly like reducers
 export const fetchQuotes = createAsyncThunk(
   'quotes/fetchQuotes', //action type string

@@ -17,5 +17,6 @@ const bookmarkSlice = createSlice({
     }
 })
 
+//reducers are exported to be used
 export const {addBookmark,removeBookmark} = bookmarkSlice.actions;
-export const bookmarkReducer = bookmarkSlice.reducer;
+export const bookmarkReducer = bookmarkSlice.reducer; //used to configure stores
