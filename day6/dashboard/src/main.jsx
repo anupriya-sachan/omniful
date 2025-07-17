@@ -2,10 +2,28 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { Provider } from 'react-redux'
-import store from './store.js'
+import store, { persistor } from './store.js'
+import { PersistGate } from 'redux-persist/integration/react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Products from './features/products/Index.jsx'
+
+const routes = createBrowserRouter([
+  {
+    path:'/',
+    element:<App/>,
+  },
+  {
+    path:'/products/:userId',
+    element:<Products/>
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+    <PersistGate persistor={persistor} loading={null}>
+      <RouterProvider router={routes}>
+            <App />
+      </RouterProvider>
+    </PersistGate>
   </Provider>
 )

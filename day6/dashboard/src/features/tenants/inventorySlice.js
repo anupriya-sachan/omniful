@@ -15,7 +15,8 @@ export const fetchInventory = createAsyncThunk(
                 productId,
                 quantity:100,
             }))
-        }))
+        }))        
+        
         return inventory;
     }
 )
@@ -49,8 +50,9 @@ const inventorySlice = createSlice({
                 return;
             }
             const listing = inventory.items.find((i)=>i.productId==productId); //get the item with that product id
+            
             if(listing  && listing.quantity>0){
-                listing[quantity]-=1;
+                listing.quantity-=1;
             }
 
         },
@@ -61,8 +63,8 @@ const inventorySlice = createSlice({
                 //inventory does not exist
                 return;
             }
-            inventory.items = inventory.items.filter((i)=>{i.productId!=productId});
-
+            console.log(inventory.items);
+            inventory.items = inventory.items.filter((i)=> i.productId!=productId);
         }
     },
     extraReducers:(builder)=>{

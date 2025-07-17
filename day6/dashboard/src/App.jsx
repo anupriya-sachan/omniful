@@ -1,20 +1,15 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
-import Products from './features/products/Index'
+import Tenants from './features/tenants';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <nav className='h-16 bg-purple-500 w-full'>
-
+    <nav className='h-16 bg-purple-500 w-full flex'>
     </nav>
     <div className='min-h-screen min-w-full bg-white'>
-          <Products/>
+          <Tenants/>
     </div>
-
-     
     </>
   )
 }
