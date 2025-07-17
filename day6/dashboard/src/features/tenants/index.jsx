@@ -32,9 +32,6 @@ function Tenants(){
         
     }, [dispatch,users.ids.length, products.ids.length, inventory.ids.length]);
 
-    useEffect(()=>{
-        console.log(products);
-    },[products]);
 
     function getActive(id) {
         const inventoryEntity = inventory.entities[users.entities[id].inv];
@@ -55,10 +52,7 @@ function Tenants(){
     else{
     return(
         <div className="h-full w-full">
-            {users.ids.map((user)=>{
-                console.log(inventory);
-                console.log(users.entities[user].inv);
-                
+            {users.ids.map((user)=>{                
                 return(
                     <div onClick={() => handleClick(user)}>
                         <TenantCard key={user}

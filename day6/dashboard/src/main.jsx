@@ -6,16 +6,29 @@ import store, { persistor } from './store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Products from './features/products/Index.jsx'
+import AuditLogs from './features/logs/index.jsx'
+import Tenants from './features/tenants/index.jsx'
 
 const routes = createBrowserRouter([
   {
     path:'/',
     element:<App/>,
+    children:[
+      {
+        path:'/',
+        element:<Tenants/>
+      },
+      {
+        path:'/products/:userId',
+        element:<Products/>
+      },
+      {
+        path:'/auditlogs',
+        element:<AuditLogs/>
+      }
+    ]
   },
-  {
-    path:'/products/:userId',
-    element:<Products/>
-  }
+  
 ])
 
 createRoot(document.getElementById('root')).render(
