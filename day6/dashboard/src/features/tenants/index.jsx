@@ -36,11 +36,14 @@ function Tenants(){
         console.log(products);
     },[products]);
 
-    function getActive(id){
-        const items = inventory.entities[users.entities[id].inv].items;
-        const active = items.filter((item)=>item.quantity>0);
+    function getActive(id) {
+        const inventoryEntity = inventory.entities[users.entities[id].inv];
+        if (!inventoryEntity || !inventoryEntity.items) return 0; 
+
+        const active = inventoryEntity.items.filter((item) => item.quantity > 0);
         return active.length;
     }
+
 
     function handleClick(userId) {
         navigate(`/products/${(userId)}`);
@@ -60,7 +63,7 @@ function Tenants(){
                     <div onClick={() => handleClick(user)}>
                         <TenantCard key={user}
                                 tenantName={users.entities[user].name}
-                                productCount={inventory.entities[users.entities[user].inv].items.length}
+                                productCount={inventory.entities[users.entities[user].inv]?.items?.length || 0}
                                 activeProducts={getActive(user)}
                             />
                     </div>
