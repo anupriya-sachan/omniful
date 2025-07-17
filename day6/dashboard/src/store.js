@@ -5,7 +5,7 @@ import { inventoryReducer } from "./features/tenants/inventorySlice";
 import createIndexedDBStorage from 'redux-persist-indexeddb-storage';
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
-import { auditReducer } from "./features/logs/auditSlice";
+import { auditReducer } from "./features/audits/auditSlice";
 import auditMiddleware from "./middleware/audit";
 
 const indexedDBStorage = createIndexedDBStorage('myIndexedDB', 'myDataStore');

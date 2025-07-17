@@ -6,7 +6,7 @@ import store, { persistor } from './store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Products from './features/products/Index.jsx'
-import AuditLogs from './features/logs/index.jsx'
+import AuditLogs from './features/audits/index.jsx'
 import Tenants from './features/tenants/index.jsx'
 
 const routes = createBrowserRouter([
