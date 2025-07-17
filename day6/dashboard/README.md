@@ -1,12 +1,9 @@
-# React + Vite
+## Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Built with **Redux Toolkit** for centralized and predictable state management across the app.
+- Implemented **custom middleware** to log all dispatched actions (action type, payload, timestamp).
+- These logs are stored in an **`audits` slice**, helping with debugging.
+- Used **redux-persist** to persist the Redux store and audit logs across refreshes.
+- Integrated **createEntityAdapter** to efficiently manage normalized collections (e.g., products/users).
+- API data fetching is handled using **Redux Thunks**, keeping async logic out of components.
+- The app is **offline-first**, with audit logs stored in **IndexedDB** for persistence without a network.
