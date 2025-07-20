@@ -33,6 +33,7 @@ function Tenants(){
     }, [dispatch,users.ids.length, products.ids.length, inventory.ids.length]);
 
 
+    //not stock out products
     function getActive(id) {
         const inventoryEntity = inventory.entities[users.entities[id].inv];
         if (!inventoryEntity || !inventoryEntity.items) return 0; 
