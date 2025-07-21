@@ -27,9 +27,9 @@ export default function MultiStepForm({isEditable}) {
     ); 
   
     const [stepIndex, setStepIndex] = useState(() => {
-      if (isEditMode) return 0;
-      const savedStep = localStorage.getItem("multiStepStepIndex");
-      return savedStep ? Number(savedStep) : 0;
+    if (isEditMode) return 0;
+    const savedStep = localStorage.getItem("multiStepStepIndex");
+    return savedStep ? Number(savedStep) : 0;
     });
 
     const savedForm = !isEditMode
@@ -40,16 +40,15 @@ export default function MultiStepForm({isEditable}) {
 
 
     const methods = useForm({
-    mode: "all",
     resolver: yupResolver(yupStepSchema[stepIndex]),
-      defaultValues: {
-      shippingAddress: {},
-      billingAddress: {},
-      products: [{ productId: "", name: "", quantity: "", price: "" }],
-      billingSameAsShipping: false, 
-      ...(savedForm?.data || {}),
-      ...(isEditMode && existingOrder),
-      },
+    defaultValues: {
+    shippingAddress: {},
+    billingAddress: {},
+    products: [{ productId: "", name: "", quantity: "", price: "" }],
+    billingSameAsShipping: false, 
+    ...(savedForm?.data || {}),
+    ...(isEditMode && existingOrder),
+    },
     });  
 
     useEffect(() => {
@@ -67,7 +66,7 @@ export default function MultiStepForm({isEditable}) {
     }
     }, [stepIndex, isEditMode]);
 
-    const { control, handleSubmit, watch, trigger,getValues, formState: { errors } } = methods;
+    const { control, handleSubmit, watch, trigger, formState: { errors } } = methods;
 
     const currentStep = formDatajson[stepIndex];
 
@@ -79,25 +78,25 @@ export default function MultiStepForm({isEditable}) {
     const billingSameAsShipping = watch("billingSameAsShipping");
 
     useEffect(() => {
-    if (billingSameAsShipping) {
-    const shipping = methods.getValues("shippingAddress");
-    methods.setValue("billingAddress", shipping);
-    }
-    }, [billingSameAsShipping, methods]);
+      if (billingSameAsShipping) {
+      const shipping = methods.getValues("shippingAddress");
+      methods.setValue("billingAddress", shipping);
+      }
+      }, [billingSameAsShipping, methods]);
 
     async function onNext() {
       const stepFieldNames = currentStep.isRepeatable
-        ? ["products"]
-        : currentStep.fields.map(f => f.name);    
+        ? currentStep.productFields.flatMap(f =>
+            fields.map((_, index) => `products.${index}.${f.name}`)
+          )
+        : currentStep.productFields.map(f => f.name);
 
       const valid = await trigger(stepFieldNames);
 
-      console.log(getValues());
-
-      if (valid) {
-        setStepIndex(i => Math.min(i + 1, formDatajson.length - 1));
-      }
+      setStepIndex((i) => Math.min(i + 1, formDatajson.length - 1));
+      console.log("Validation failed", getValues(), errors);
     }
+
 
     function onPrevious() {
     setStepIndex((i) => Math.max(i - 1, 0));
@@ -189,8 +188,8 @@ export default function MultiStepForm({isEditable}) {
             </option>
             ))}
         </select>
-        {errors?.[name]?.message && (
-          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
+        {errors && errors[name] && (
+            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
         )}
         </div>
     );
@@ -209,9 +208,10 @@ export default function MultiStepForm({isEditable}) {
             </option>
         ))}
         </select>
-        {errors?.[name]?.message && (
-          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
+        {errors.status && (
+        <p className="text-red-600 text-sm mt-1">{errors.status.message}</p>
         )}
+
     </div>
     );
     } else if (field.type === "textarea") {
@@ -219,8 +219,8 @@ export default function MultiStepForm({isEditable}) {
     <div key={name} className="mb-4">
         <label className="block mb-1 font-medium">{field.label}</label>
         <textarea {...methods.register(name)} className="border p-2 w-full" />
-        {errors?.[name]?.message && (
-          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
+        {errors && errors[name] && (
+        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
         )}
     </div>
     );
@@ -242,8 +242,8 @@ export default function MultiStepForm({isEditable}) {
             }}
             {...rest}
             />
-            {errors?.[name]?.message && (
-              <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
+            {errors && errors[name] && (
+            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
             )}
         </div>
         )}
@@ -258,8 +258,8 @@ export default function MultiStepForm({isEditable}) {
         {...methods.register(name)}
         className="border p-2 w-full"
         />
-        {errors?.[name]?.message && (
-          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
+        {errors && errors[name] && (
+        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
         )}
     </div>
     );
