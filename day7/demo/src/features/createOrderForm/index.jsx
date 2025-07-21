@@ -27,9 +27,9 @@ export default function MultiStepForm({isEditable}) {
     ); 
   
     const [stepIndex, setStepIndex] = useState(() => {
-    if (isEditMode) return 0;
-    const savedStep = localStorage.getItem("multiStepStepIndex");
-    return savedStep ? Number(savedStep) : 0;
+      if (isEditMode) return 0;
+      const savedStep = localStorage.getItem("multiStepStepIndex");
+      return savedStep ? Number(savedStep) : 0;
     });
 
     const savedForm = !isEditMode
@@ -40,15 +40,16 @@ export default function MultiStepForm({isEditable}) {
 
 
     const methods = useForm({
+    mode: "all",
     resolver: yupResolver(yupStepSchema[stepIndex]),
-    defaultValues: {
-    shippingAddress: {},
-    billingAddress: {},
-    products: [{ productId: "", name: "", quantity: "", price: "" }],
-    billingSameAsShipping: false, 
-    ...(savedForm?.data || {}),
-    ...(isEditMode && existingOrder),
-    },
+      defaultValues: {
+      shippingAddress: {},
+      billingAddress: {},
+      products: [{ productId: "", name: "", quantity: "", price: "" }],
+      billingSameAsShipping: false, 
+      ...(savedForm?.data || {}),
+      ...(isEditMode && existingOrder),
+      },
     });  
 
     useEffect(() => {
@@ -66,7 +67,7 @@ export default function MultiStepForm({isEditable}) {
     }
     }, [stepIndex, isEditMode]);
 
-    const { control, handleSubmit, watch, trigger, formState: { errors } } = methods;
+    const { control, handleSubmit, watch, trigger,getValues, formState: { errors } } = methods;
 
     const currentStep = formDatajson[stepIndex];
 
@@ -85,12 +86,17 @@ export default function MultiStepForm({isEditable}) {
     }, [billingSameAsShipping, methods]);
 
     async function onNext() {
-    const stepFieldNames = currentStep.isRepeatable
-    ? currentStep.fields.map(f => `products.${f.name}`)
-    : currentStep.fields.map(f => f.name);
+      const stepFieldNames = currentStep.isRepeatable
+        ? ["products"]
+        : currentStep.fields.map(f => f.name);    
 
-    const valid = await trigger(stepFieldNames);
-    if (valid) setStepIndex((i) => Math.min(i + 1, formDatajson.length - 1));
+      const valid = await trigger(stepFieldNames);
+
+      console.log(getValues());
+
+      if (valid) {
+        setStepIndex(i => Math.min(i + 1, formDatajson.length - 1));
+      }
     }
 
     function onPrevious() {
@@ -183,8 +189,8 @@ export default function MultiStepForm({isEditable}) {
             </option>
             ))}
         </select>
-        {errors && errors[name] && (
-            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
+        {errors?.[name]?.message && (
+          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
         )}
         </div>
     );
@@ -203,10 +209,9 @@ export default function MultiStepForm({isEditable}) {
             </option>
         ))}
         </select>
-        {errors.status && (
-        <p className="text-red-600 text-sm mt-1">{errors.status.message}</p>
+        {errors?.[name]?.message && (
+          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
         )}
-
     </div>
     );
     } else if (field.type === "textarea") {
@@ -214,8 +219,8 @@ export default function MultiStepForm({isEditable}) {
     <div key={name} className="mb-4">
         <label className="block mb-1 font-medium">{field.label}</label>
         <textarea {...methods.register(name)} className="border p-2 w-full" />
-        {errors && errors[name] && (
-        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
+        {errors?.[name]?.message && (
+          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
         )}
     </div>
     );
@@ -237,8 +242,8 @@ export default function MultiStepForm({isEditable}) {
             }}
             {...rest}
             />
-            {errors && errors[name] && (
-            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
+            {errors?.[name]?.message && (
+              <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
             )}
         </div>
         )}
@@ -253,8 +258,8 @@ export default function MultiStepForm({isEditable}) {
         {...methods.register(name)}
         className="border p-2 w-full"
         />
-        {errors && errors[name] && (
-        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
+        {errors?.[name]?.message && (
+          <p className="text-red-600 text-sm mt-1">{errors[name].message}</p>
         )}
     </div>
     );
