@@ -85,16 +85,12 @@ export default function MultiStepForm({isEditable}) {
       }, [billingSameAsShipping, methods]);
 
     async function onNext() {
-      const stepFieldNames = currentStep.isRepeatable
-        ? currentStep.productFields.flatMap(f =>
-            fields.map((_, index) => `products.${index}.${f.name}`)
-          )
-        : currentStep.productFields.map(f => f.name);
-
-      const valid = await trigger(stepFieldNames);
-
-      setStepIndex((i) => Math.min(i + 1, formDatajson.length - 1));
-      console.log("Validation failed", getValues(), errors);
+      const valid = await trigger(); // validate all fields
+      if (valid) {
+        setStepIndex((i) => Math.min(i + 1, formDatajson.length - 1));
+      } else {
+        console.log("Validation failed");
+      }
     }
 
 
