@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 
 function App() {
   const user = useSelector((state)=>state.auth);
-  console.log(user);
 
   return (
     <>
