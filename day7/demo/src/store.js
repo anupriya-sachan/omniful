@@ -2,9 +2,9 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import createIndexedDBStorage from 'redux-persist-indexeddb-storage';
-
+import { auditReducer } from "./features/audits/auditSlice";
 import { authReducer } from "./features/auth/authSlice";
-import { orderReducer } from "./features/order/orderSlice";
+import { orderReducer } from "./features/createOrderForm/orderSlice";
 
 const indexedDBStorage = createIndexedDBStorage('myIndexedDB', 'myDataStore');
 
@@ -16,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     'auth':authReducer,
     'orders':orderReducer,
+    'audit':auditReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer);

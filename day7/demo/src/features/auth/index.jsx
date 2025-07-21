@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
 import { setLoginValue } from "./authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
 const LogIn = () => {
     const {register,handleSubmit,formState:{errors}} = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const submitValues = (data) => {
         dispatch(setLoginValue(data));
-        console.log(data);
-        
+        navigate('/');
     } 
     return(
         <>

@@ -1,6 +1,0 @@
-const Order = (field) => {
-    return(
-        <>
-        </>
-    )
-}

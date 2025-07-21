@@ -5,7 +5,7 @@ const initialState = [
     orderId: "ORD001",
     cName: "Acme Corp",
     customerEmail: "contact@acme.com",
-    customerPhone: "+91-9876543210",
+    customerPhone: "+91 9876543210",
     orderDate: "2025-07-10",
     deliveryDate: "2025-07-20",
     shippingAddress: {
@@ -49,7 +49,7 @@ const initialState = [
     orderId: "ORD002",
     cName: "Beta Ltd",
     customerEmail: "info@beta.com",
-    customerPhone: "+91-9123456789",
+    customerPhone: "+91 9123456789",
     orderDate: "2025-07-08",
     deliveryDate: "2025-07-18",
     shippingAddress: {
@@ -87,7 +87,7 @@ const initialState = [
     orderId: "ORD003",
     cName: "Gamma Traders",
     customerEmail: "sales@gammatraders.in",
-    customerPhone: "+91-9988776655",
+    customerPhone: "+919988776655",
     orderDate: "2025-07-05",
     deliveryDate: "2025-07-15",
     shippingAddress: {
@@ -128,11 +128,19 @@ const orderSlice = createSlice({
     name:'orders',
     reducers:{
         setNewOrder(state,action){
-            state.push(action.payload);
+          const data = {
+            createdAt:new Date(),
+            updatedAt:Date.now(),
+            ...action.payload
+          }
+          state.push(data);
             
         },
         updatePrevOrders(state,action){
-            state = action.payload;
+            if (Array.isArray(action.payload)) {
+              return action.payload;
+            }
+            return state;
         }
     }
 })
