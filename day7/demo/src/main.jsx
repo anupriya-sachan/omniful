@@ -9,6 +9,7 @@ import LogIn from './features/auth/index.jsx'
 import Dashboard from './features/dashboard/index.jsx'
 import WithRoleMultiPageForm from './features/createOrderForm/WithRoleMultiPageForm.jsx'
 import AuditLogPage from './features/audits/Audit.jsx'
+import RequireAuth from './features/auth/reuireAuth.jsx'
 
 const queryClient = new QueryClient();
 
@@ -18,26 +19,30 @@ const routes = createBrowserRouter([
       element:<LogIn/>
   },
   {
-    path:'/',
-    element:<App/>,
-    children:[
+    path: '/',
+    element: (
+      <RequireAuth>
+        <App />
+      </RequireAuth>
+    ),
+    children: [
       {
-        path:'/dashboard',
-        element:<Dashboard/>
+        path: '/',
+        element: <Dashboard />,
       },
       {
-        path:'/create',
-        element:<WithRoleMultiPageForm/>
+        path: '/create',
+        element: <WithRoleMultiPageForm />,
       },
       {
-        path:'/orders/:orderId',
-        element:<WithRoleMultiPageForm/>
+        path: '/orders/:orderId',
+        element: <WithRoleMultiPageForm />,
       },
       {
-        path:'/audits',
-        element:<AuditLogPage/>
-      }
-    ]
+        path: '/audits',
+        element: <AuditLogPage />,
+      },
+    ],
   },
 ])
 

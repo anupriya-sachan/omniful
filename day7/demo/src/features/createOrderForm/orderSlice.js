@@ -87,7 +87,7 @@ const initialState = [
     orderId: "ORD003",
     cName: "Gamma Traders",
     customerEmail: "sales@gammatraders.in",
-    customerPhone: "+919988776655",
+    customerPhone: "+91 9988776655",
     orderDate: "2025-07-05",
     deliveryDate: "2025-07-15",
     shippingAddress: {
