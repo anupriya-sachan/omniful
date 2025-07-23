@@ -27,9 +27,9 @@ export default function MultiStepForm({isEditable}) {
     ); 
   
     const [stepIndex, setStepIndex] = useState(() => {
-    if (isEditMode) return 0;
-    const savedStep = localStorage.getItem("multiStepStepIndex");
-    return savedStep ? Number(savedStep) : 0;
+      if (isEditMode) return 0;
+      const savedStep = localStorage.getItem("multiStepStepIndex");
+      return savedStep ? Number(savedStep) : 0;
     });
 
     const savedForm = !isEditMode
@@ -38,54 +38,67 @@ export default function MultiStepForm({isEditable}) {
 
     const { data: productOptions = [], isLoading: productsLoading } = useProducts();
 
-
     const methods = useForm({
-    resolver: yupResolver(yupStepSchema[stepIndex]),
-    defaultValues: {
-    shippingAddress: {},
-    billingAddress: {},
-    products: [{ productId: "", name: "", quantity: "", price: "" }],
-    billingSameAsShipping: false, 
-    ...(savedForm?.data || {}),
-    ...(isEditMode && existingOrder),
-    },
+      resolver: yupResolver(yupStepSchema[stepIndex]),
+      defaultValues: {
+      shippingAddress: {},
+      documents:[],
+      billingAddress: {},
+      products: [{ productId: "", name: "", quantity: "", price: "" }],
+      billingSameAsShipping: false, 
+      ...(savedForm?.data || {}),
+      ...(isEditMode && existingOrder),
+      },
     });  
 
     useEffect(() => {
-    if (!isEditMode) {
-    const subscription = methods.watch((value) => {
-        localStorage.setItem("multiStepForm", JSON.stringify({ data: value }));
-    });
-    return () => subscription.unsubscribe();
-    }
+      if (!isEditMode) {
+      const subscription = methods.watch((value) => {
+          localStorage.setItem("multiStepForm", JSON.stringify({ data: value }));
+      });
+      return () => subscription.unsubscribe();
+      }
     }, [methods, isEditMode]);
 
     useEffect(() => {
-    if (!isEditMode) {
-    localStorage.setItem("multiStepStepIndex", stepIndex.toString());
-    }
-    }, [stepIndex, isEditMode]);
+      if (!isEditMode) {
+      localStorage.setItem("multiStepStepIndex", stepIndex.toString());
+      }
+      }, [stepIndex, isEditMode]);
 
-    const { control, handleSubmit, watch, trigger, formState: { errors } } = methods;
+      const { control, handleSubmit, watch, trigger, formState: { errors } } = methods;
 
-    const currentStep = formDatajson[stepIndex];
+      const currentStep = formDatajson[stepIndex];
 
-    const { fields: productFields, append, remove } = useFieldArray({
-    control,
-    name: "products",
+      const { fields: productFields, append, remove } = useFieldArray({
+        control,
+        name: "products",
     });
 
     const billingSameAsShipping = watch("billingSameAsShipping");
 
-    useEffect(() => {
-      if (billingSameAsShipping) {
-      const shipping = methods.getValues("shippingAddress");
-      methods.setValue("billingAddress", shipping);
-      }
-      }, [billingSameAsShipping, methods]);
+    const nestedError = (name) => {
+      if (!errors || !name) return undefined;
+      const rep = name.replaceAll('[','.').replaceAll(']','');
+      
+      const res =  rep.split('.')
+        .reduce((acc, key) => {
+          if (acc === undefined) return undefined;
+          const index = isNaN(key) ? key : Number(key);
+          return acc?.[index];
+        }, errors);
+        return res?.message;
+    }
 
     async function onNext() {
+
+      if (billingSameAsShipping) {
+      const shipping = methods.getValues("shippingAddress");
+      methods.setValue("billingAddress", shipping,{shouldValidate:true});
+      }      
+
       const valid = await trigger(); // validate all fields
+
       if (valid) {
         setStepIndex((i) => Math.min(i + 1, formDatajson.length - 1));
       } else {
@@ -93,19 +106,17 @@ export default function MultiStepForm({isEditable}) {
       }
     }
 
-
     function onPrevious() {
-    setStepIndex((i) => Math.max(i - 1, 0));
+      setStepIndex((i) => Math.max(i - 1, 0));
     }
 
     function calculateTotalAmount(products) {
-    return products.reduce((total, product) => {
-    const qty = Number(product.quantity);
-    const price = Number(product.price);
-    return total + (qty * price || 0);
-    }, 0);
+      return products.reduce((total, product) => {
+      const qty = Number(product.quantity);
+      const price = Number(product.price);
+      return total + (qty * price || 0);
+      }, 0);
     }
-
 
     function onSubmit(data) {
         const orderId = uuidv4();
@@ -148,118 +159,131 @@ export default function MultiStepForm({isEditable}) {
         navigate('/');
     }
 
+    const [uploaded, setUploaded] = useState(false);
+    const [file,setFile] = useState();
+
     function renderField(field, index) {
-    const name = field.name;
-    const value = methods.getValues(name);
+      const name = field.name;
+      const value = methods.getValues(name);
 
-    if (!isEditable) {
-    return (
-    <div key={name} className="mb-4">
-        <label className="block mb-1 font-medium">{field.label}</label>
-        <p className="p-2 bg-gray-100 rounded">{value || '-'}</p>
-    </div>
-    );
-    }
+      if (!isEditable) {
+      return (
+      <div key={name} className="mb-4">
+          <label className="block mb-1 font-medium">{field.label}</label>
+          <p className="p-2 bg-gray-100 rounded">{value || '-'}</p>
+      </div>
+      );
+      }
 
-    if (field.type === "select" && field.source === "products") {
-    const prefix = `products.${index}`;
-    return (
-        <div key={name} className="mb-4">
-        <label className="block mb-1 font-medium">{field.label}</label>
-        <select
-            {...methods.register(name)}
-            className="border p-2 w-full"
-            onChange={(e) => {
-            const selected = productOptions.find(p => p.id === e.target.value);
-            methods.setValue(`${prefix}productId`, selected?.id || "");
-            methods.setValue(`${prefix}name`, selected?.name || "");
-            methods.setValue(`${prefix}price`, selected?.price || "");
-            }}
-            disabled={productsLoading}
-        >
-            <option value="">Select a product...</option>
-            {productOptions.map((prod) => (
-            <option key={prod.id} value={prod.id}>
-                {prod.name}
-            </option>
-            ))}
-        </select>
-        {errors && errors[name] && (
-            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
-        )}
-        </div>
-    );
-    }
+      if (field.type === "select" && field.source === "products") {
+      const prefix = `products.${index}`;
+      return (
+          <div key={name} className="mb-4">
+          <label className="block mb-1 font-medium">{field.label}</label>
+          <select
+              {...methods.register(name)}
+              className="border p-2 w-full"
+              onChange={(e) => {
+              const selected = productOptions.find(p => p.id === e.target.value);
+              methods.setValue(`${prefix}productId`, selected?.id || "");
+              methods.setValue(`${prefix}name`, selected?.name || "");
+              methods.setValue(`${prefix}price`, selected?.price || "");
+              }}
+              disabled={productsLoading}
+          >
+              <option value="">Select a product...</option>
+              {productOptions.map((prod) => (
+              <option key={prod.id} value={prod.id}>
+                  {prod.name}
+              </option>
+              ))}
+          </select>
+          {errors && errors.products && (
+              <p className="text-red-600 text-sm mt-1">{nestedError(name)}</p>
+          )}
+          </div>
+      );
+      }
 
 
     if (field.type === "select") {
-    return (
-    <div key={name} className="mb-4">
-        <label className="block mb-1 font-medium">{field.label}</label>
-        <select {...methods.register(name)} className="border p-2 w-full">
-        <option value="">Select...</option>
-        {field.options.map((opt) => (
-            <option key={opt} value={opt}>
-            {opt}
-            </option>
-        ))}
-        </select>
-        {errors.status && (
-        <p className="text-red-600 text-sm mt-1">{errors.status.message}</p>
-        )}
+        return (
+        <div key={name} className="mb-4">
+            <label className="block mb-1 font-medium">{field.label}</label>
+            <select {...methods.register(name)} className="border p-2 w-full">
+            <option value="">Select...</option>
+            {field.options.map((opt) => (
+                <option key={opt} value={opt}>
+                {opt}
+                </option>
+            ))}
+            </select>
+            {errors && (
+            <p className="text-red-600 text-sm mt-1">{nestedError(name)}</p>
+            )}
 
-    </div>
-    );
+        </div>
+        );
     } else if (field.type === "textarea") {
-    return (
-    <div key={name} className="mb-4">
-        <label className="block mb-1 font-medium">{field.label}</label>
-        <textarea {...methods.register(name)} className="border p-2 w-full" />
-        {errors && errors[name] && (
-        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
-        )}
-    </div>
-    );
+        return (
+        <div key={name} className="mb-4">
+            <label className="block mb-1 font-medium">{field.label}</label>
+            <textarea {...methods.register(name)} className="border p-2 w-full" />
+            {errors && (
+            <p className="text-red-600 text-sm mt-1">{nestedError(name)}</p>
+            )}
+        </div>
+        );
     } else if (field.type === "file") {
-    return (
-    <Controller
-        control={control}
-        name={name}
-        render={({ field: { onChange, value, ...rest } }) => (
+        return (
+        <Controller
+            control={control}
+            name={name}
+            render={({ field: { onChange, value, ...rest } }) => (
+            <div key={name} className="mb-4">
+                <label className="block mb-1 font-medium">{field.label}</label>
+                <input
+                type="file"
+                multiple={false}
+                className="border p-2 w-full"
+                onChange={(e) => {
+                    const filesArray = Array.from(e.target.files);
+                    if(filesArray.length){
+                      setUploaded(true);
+                    }
+                    setFile(filesArray[0]);
+                    onChange([e.target.files[0]]);
+                }}
+                {...rest}
+                />
+                {uploaded && 
+                <p>
+                  Preview:
+                  <img src={URL.createObjectURL(file)} alt="" className="h-20 w-20 my-2"/>
+                </p>
+                }
+                {errors && (
+                <p className="text-red-600 text-sm mt-1">{nestedError(name)}</p>
+                )}
+            </div>
+            )}
+        />
+        );
+    } else {
+        return (
         <div key={name} className="mb-4">
             <label className="block mb-1 font-medium">{field.label}</label>
             <input
-            type="file"
-            multiple={false}
+            type={field.type}
+            {...methods.register(name)}
             className="border p-2 w-full"
-            onChange={(e) => {
-                const filesArray = Array.from(e.target.files);
-                onChange(filesArray);
-            }}
-            {...rest}
             />
-            {errors && errors[name] && (
-            <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
+            {errors && (
+            <p className="text-red-600 text-sm mt-1">{nestedError(name)}</p>
             )}
         </div>
-        )}
-    />
-    );
-    } else {
-    return (
-    <div key={name} className="mb-4">
-        <label className="block mb-1 font-medium">{field.label}</label>
-        <input
-        type={field.type}
-        {...methods.register(name)}
-        className="border p-2 w-full"
-        />
-        {errors && errors[name] && (
-        <p className="text-red-600 text-sm mt-1">{errors[name]?.message}</p>
-        )}
-    </div>
-    );
-    }
+        );
+        }
     }
 
     const isReviewStep = currentStep.step === "Review";
@@ -274,6 +298,9 @@ export default function MultiStepForm({isEditable}) {
             <h3 className="text-xl font-semibold mb-4">Review Your Details</h3>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto text-sm">
               {JSON.stringify(methods.getValues(), null, 2)}
+              {methods.getValues("documents")?.length > 0 && (
+                <p>Document: {methods.getValues("documents")[0].name}</p>
+              )}
             </pre>
           </div>
         ) : currentStep.step === "Address" ? (

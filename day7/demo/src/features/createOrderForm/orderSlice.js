@@ -128,12 +128,12 @@ const orderSlice = createSlice({
     name:'orders',
     reducers:{
         setNewOrder(state,action){
-          const data = {
-            createdAt:new Date(),
-            updatedAt:Date.now(),
-            ...action.payload
-          }
-          state.push(data);
+          state = state.filter(order => order.orderId !== action.payload.orderId);
+          state.push({
+            ...action.payload,
+            createdAt: new Date().toISOString(),
+            updatedAt: Date.now(),
+          });
             
         },
         updatePrevOrders(state,action){

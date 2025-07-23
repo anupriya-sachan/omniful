@@ -1,10 +1,11 @@
 import './App.css'
-import { Outlet } from 'react-router'
+import { Outlet, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router';
 
 function App() {
   const user = useSelector((state)=>state.auth);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -26,6 +27,17 @@ function App() {
               Logs
             </Link>
           )}
+        </div>
+        <div>
+          <button
+              type="button"
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+              onClick={() =>{localStorage.clear();
+                navigate('/login')
+              }}
+            >
+              Log out
+            </button>
         </div>
         </nav>
           <Outlet/>
